@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    #total-div{
+      width: 100px;
+      height: 100px;
+      /* background-color: black; */
+    }
+    img
+    {
+      width:150px;
+      height: 200px;
+    }
+  </style>
+
+  <body>
+
+    <button>   <a href="checkout.html"> Checkout  </a></button>
+    <div id="total-div">
+      <h2 id="total-price">
+        <!--Show cart total here, do not add anything only Total value. Not even "Total - 1200Rs" but like this "1200" -->
+      </h2>
+    </div>
+    <div id="cart">
+      <!--Show dishes added to cart here-->
+      <!-- add an remove button to each dish so that you can remove that dish from cart, give the button HTML id as 'remove' -->
+    </div>
+  </body>
+</html>
+
+
+<script>
+
+var cartData=JSON.parse(localStorage.getItem("cart"))
+console.log(cartData);
+
+var total = cartData.reduce(function (sum, elem, index, arr) {
+    return sum + Number(elem.price);
+  }, 0);
+
+  document.querySelector("#total-price").innerText=`${total}`
+
+cartData.map(function (el, index)
+{
+      let div=document.createElement("div")
+      // console.log(el);
+     
+      let image=document.createElement("img")
+      image.src=el.strMealThumb;
+
+      let name=document.createElement("p")
+      name.innerText=el.strMeal;
+
+      let price=document.createElement("p")
+      price.innerText=el.price;
+
+      let btn=document.createElement("button")
+      btn.setAttribute=("id","remove")
+      btn.innerHTML="remove"
+      btn.addEventListener("click", function () {
+      removeItem(el, index)
+      });
+      div.append(image,name,price,btn)
+      // menu.append(div)
+      document.querySelector("#cart").append(div)
+    })
+
+      function removeItem(el, index) {
+    console.log(el, index);
+    cartData.splice(index, 1);
+    console.log(cartData);
+    localStorage.setItem("cart", JSON.stringify(cartData));
+    window.location.reload();
+  }
+
+
+</script>

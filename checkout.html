@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+
+  <body>
+
+  
+    <div id="order-form">
+      <!--Add your form html element here-->
+      <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+      <form action="" onsubmit="checkOut(event)">
+        <input type="text" placeholder="name" id="name"> <br>
+        <input type="text" placeholder="number" id="number"> <br>
+        <input type="text" placeholder="address" id="address"> <br>
+        <input type="submit" id="submit">
+      </form>
+    </div>
+  </body>
+
+</html>
+ <script>
+
+let id;
+  function checkOut(e){
+    e.preventDefault();
+
+      alert("Your order is accepted")
+   
+
+const myTimeout = setTimeout(myGreeting, 3000);
+
+function myGreeting() {
+  alert("Your order is being cooked")
+}
+
+function myStopFunction() {
+  clearTimeout(myTimeout);
+}
+
+const cook = setTimeout(cookFood, 8000);
+
+function cookFood() {
+  alert("Your order is ready")
+}
+
+function myStopFunction() {
+  clearTimeout(cook);
+}
+
+const delivery = setTimeout(deliveryFood, 10000);
+
+function deliveryFood() {
+  alert(" Order out for delivery")
+}
+
+function myStopFunction() {
+  clearTimeout(delivery);
+}
+
+const deliver = setTimeout(deliverFood, 12000);
+
+function deliverFood() {
+  alert(" Order delivered")
+}
+
+function myStopFunction() {
+  clearTimeout(deliver);
+}
+    
+
+  }
+
+ </script>
